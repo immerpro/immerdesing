@@ -1,0 +1,1 @@
+C:\xampp\php\php.exe C:\xampp\htdocs\immer\tasker.php "Inventario/notificar" >> C:\xampp\htdocs\immer\tasker.log
