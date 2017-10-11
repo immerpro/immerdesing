@@ -1,72 +1,127 @@
-<footer class="page-footer blue center-on-small-only">
+<footer>
+	
+		<div class="container">
+			<div class="row">
+				<div class="col-sm-6 col-md-4">
+					<div class="wow fadeInDown" data-wow-delay="0.1s">
+					<div class="widget">
+						<h5>About Medicio</h5>
+						<p>
+						Lorem ipsum dolor sit amet, ne nam purto nihil impetus, an facilisi accommodare sea
+						</p>
+					</div>
+					</div>
+					<div class="wow fadeInDown" data-wow-delay="0.1s">
+					<div class="widget">
+						<h5>Information</h5>
+						<ul>
+							<li><a href="#">Home</a></li>
+							<li><a href="#">Laboratory</a></li>
+							<li><a href="#">Medical treatment</a></li>
+							<li><a href="#">Terms & conditions</a></li>
+						</ul>
+					</div>
+					</div>
+				</div>
+				<div class="col-sm-6 col-md-4">
+					<div class="wow fadeInDown" data-wow-delay="0.1s">
+					<div class="widget">
+						<h5>Medicio center</h5>
+						<p>
+						Nam leo lorem, tincidunt id risus ut, ornare tincidunt naqunc sit amet.
+						</p>
+						<ul>
+							<li>
+								<span class="fa-stack fa-lg">
+									<i class="fa fa-circle fa-stack-2x"></i>
+									<i class="fa fa-calendar-o fa-stack-1x fa-inverse"></i>
+								</span> Monday - Saturday, 8am to 10pm
+							</li>
+							<li>
+								<span class="fa-stack fa-lg">
+									<i class="fa fa-circle fa-stack-2x"></i>
+									<i class="fa fa-phone fa-stack-1x fa-inverse"></i>
+								</span> +62 0888 904 711
+							</li>
+							<li>
+								<span class="fa-stack fa-lg">
+									<i class="fa fa-circle fa-stack-2x"></i>
+									<i class="fa fa-envelope-o fa-stack-1x fa-inverse"></i>
+								</span> hello@medicio.com
+							</li>
 
-    <!--Footer Links-->
-    <div class="container-fluid">
-        <div class="row">
+						</ul>
+					</div>
+					</div>
+				</div>
+				<div class="col-sm-6 col-md-4">
+					<div class="wow fadeInDown" data-wow-delay="0.1s">
+					<div class="widget">
+						<h5>Our location</h5>
+						<p>The Suithouse V303, Kuningan City, Jakarta Indonesia 12940</p>		
+						
+					</div>
+					</div>
+					<div class="wow fadeInDown" data-wow-delay="0.1s">
+					<div class="widget">
+						<h5>Follow us</h5>
+						<ul class="company-social">
+								<li class="social-facebook"><a href="#"><i class="fa fa-facebook"></i></a></li>
+								<li class="social-twitter"><a href="#"><i class="fa fa-twitter"></i></a></li>
+								<li class="social-google"><a href="#"><i class="fa fa-google"></i></a></li>
+								<li class="social-vimeo"><a href="#"><i class="fa fa-youtube"></i></a></li>
+								<li class="social-dribble"><a href="#"><i class="fa fa-pinterest"></i></a></li>
+						</ul>
+					</div>
+					</div>
+				</div>
+			</div>	
+		</div>
+		<div class="sub-footer">
+		<div class="container">
+			<div class="row">
+				<div class="col-sm-6 col-md-6 col-lg-6">
+					<div class="wow fadeInLeft" data-wow-delay="0.1s">
+					<div class="text-left">
+					<p>&copy;Copyright - Medicio Theme. All rights reserved.</p>
+					</div>
+					</div>
+				</div>
+				<div class="col-sm-6 col-md-6 col-lg-6">
+					<div class="wow fadeInRight" data-wow-delay="0.1s">
+					<div class="text-right">
+						<div class="credits">
+                            <!-- 
+                                All the links in the footer should remain intact. 
+                                You can delete the links only if you purchased the pro version.
+                                Licensing information: https://bootstrapmade.com/license/
+                                Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/buy/?theme=Medicio
+                            -->
+                            <a href="https://bootstrapmade.com/free-business-bootstrap-themes-website-templates/">Business Bootstrap Themes</a> by <a href="https://bootstrapmade.com/">BootstrapMade</a>
+                        </div>
+					</div>
+					</div>
+				</div>
+			</div>	
+		</div>
+		</div>
+	</footer>
+</div>
+<a href="#" class="scrollup"><i class="fa fa-angle-up active"></i></a>
 
-            <!--First column-->
-            <div class="col-md-6">
-                <?php
-                $propiedad_img = array(
-                    'src' => 'public/img/immerproLogo.png',
-                    'alt' => 'immerpro',
-                    'class' => 'animated fadeIn mb-2 img-fluid',
-                    'title' => 'logo',
-                    'width' => '500px',
-                );
-
-                echo img($propiedad_img);
-                ?>
-
-            </div>
-            <!--/.First column-->
-
-            <!--Second column-->
-            <div class="col-md-6">
-                <h5 class="title">SIGUENOS EN:</h5>
-                <ul>
-                    <a href="https://www.facebook.com/profile.php?id=100017326595591" target="_blank"><button type="button" class="btn btn-fb btn btn-primary"><i class="fa fa-facebook left"></i> Facebook</button></a>  
-                    <a href="https://twitter.com/immerpro" target="_blank"><button type="button" class="btn btn-tw btn btn-info"><i class="fa fa-twitter left"></i> Twitter</button></a>  
-                    <a href="https://plus.google.com/u/0/107704821156580446351" target="_blank"><button type="button" class="btn btn-gplus btn btn-warning"><i class="fa fa-google-plus left"></i> Google +</button></a>
-                    <a href="https://www.youtube.com/channel/UC0UYz7Hd4MCww0bFkE1qLlg" target="_blank"><button type="button" class="btn btn-yt btn btn-danger"><i class="fa fa-youtube left"></i> Youtube</button></a>
-                </ul>
-            </div>
-            <!--/.Second column-->
-        </div>
-    </div>
-    <!--/.Footer Links-->
-
-    <!--Copyright-->
-    <div class="footer-copyright">
-        <div class="container-fluid">
-            © ImmerPro 2017
-
-        </div>
-    </div>
-    <!--/.Copyright-->
-
-</footer>
-
-<script>
-    $(document).ready(function () {
-        $('form').parsley();
-    });
-</script>
-<!--/.Footer-->
-
-<!-- /Start your project here-->
-
-<!-- SCRIPTS -->
-<!-- JQuery -->
-
-<!-- Bootstrap tooltips -->
-<script type="text/javascript" src="<?PHP echo base_url() ?>public/js/popper.min.js"></script>
-<!-- Bootstrap core JavaScript -->
-<script type="text/javascript" src="<?PHP echo base_url() ?>public/js/bootstrap.min.js"></script>
-<!-- MDB core JavaScript -->
-<script type="text/javascript" src="<?PHP echo base_url() ?>public/js/mdb.min.js"></script>
-
-
+	<!-- Core JavaScript Files -->
+    <script src="<?php echo base_url()?>public/Medicio/js/jquery.min.js"></script>	 
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/jquery.easing.min.js"></script>
+	<script src="js/wow.min.js"></script>
+	<script src="js/jquery.scrollTo.js"></script>
+	<script src="js/jquery.appear.js"></script>
+	<script src="js/stellar.js"></script>
+	<script src="plugins/cubeportfolio/js/jquery.cubeportfolio.min.js"></script>
+	<script src="js/owl.carousel.min.js"></script>
+	<script src="js/nivo-lightbox.min.js"></script>
+    <script src="js/custom.js"></script>
+    
 </body>
 
 </html>

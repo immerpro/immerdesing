@@ -11,7 +11,7 @@
             <div class="alert alert-success" role="alert" /> <?= $this->session->flashdata('incorrecto') ?> </div>  
 <?php endif; ?>
 </div>
-<?php echo form_open('categoria/InCategoria'); ?>
+<?php echo form_open('CategoriaController/InCategoria'); ?>
 <div class="flex-center">
     <?php if (validation_errors()): ?>
         <div class="alert alert-danger alert-dismissible" role="alert">

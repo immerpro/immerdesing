@@ -1,25 +1,10 @@
 <?php
-
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
-/**
- * Description of SubCategoria
- *
- * @author User
- */
 class SubCategoria extends CI_Controller {
 
     //put your code here
     public function __construct() {
         parent::__construct();
-        $this->load->model('subcategoria_model');
-        $this->load->model('categoria_model');
-
-        $this->load->helper('url_helper');
+       
     }
 
     public function index() {
@@ -41,10 +26,7 @@ class SubCategoria extends CI_Controller {
         if ($this->session->userdata('rol') == NULL || $this->session->userdata('rol') != 1) {
             redirect(base_url() . 'iniciar');
         }
-//         $mostrarNombre= $this->categoria_model->nombrecategoria($this->uri->segment(3));
-//             foreach ($mostrarNombre->result() as $fila) {
-//            $nombreCategoria = $fila->NombreCategoria;
-//        }
+
         $data = ['titulo' => 'agregar subcategoria',
             'codcategoria' => $this->uri->segment(3),
             'nombrecategoria' => 'sub',
@@ -52,9 +34,6 @@ class SubCategoria extends CI_Controller {
             'perfil' => $this->usuario_model->consultarPerfil($this->session->userdata('idUsuario'))
             ];
 
-        //$data['categorias'] = $this->categoria_model->obtenerCategorias();
-        $this->load->helper('form');
-        $this->load->library('form_validation');
         $this->form_validation->set_rules('NombreSubcategoria', 'subcategoria', 'required');
         $this->form_validation->set_rules('detalSubCategoria', 'detalle subcategoria', 'required');
 
@@ -94,11 +73,7 @@ if ($this->session->userdata('rol') == NULL || $this->session->userdata('rol') !
         $idSubCategoria = $this->uri->segment(3);
         $obtenerSubCategoria = $this->subcategoria_model->modificar_subcategoria($idSubCategoria);
 
-        // cargar el helper de manejo de formularios
-        $this->load->helper('form');
-        // cargar libreria para validar formularios
-
-        if ($obtenerSubCategoria != FALSE) {
+               if ($obtenerSubCategoria != FALSE) {
             foreach ($obtenerSubCategoria->result() as $fila) {
                 $NombreSubCategoria = $fila->NombreSubcategoria;
                 $detallesSub = $fila->detallesSub;

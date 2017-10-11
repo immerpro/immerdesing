@@ -1,13 +1,10 @@
 <?php
-
 class ColaboradorController extends CI_Controller {
-
     //put your code here
     public function __construct() {
         parent::__construct();
         $this->load->model('usuario_model');
     }
-
     public function index() {
         if ($this->session->userdata('rol') == NULL || $this->session->userdata('rol') != 2) {
             redirect(base_url() . 'iniciar');
@@ -19,7 +16,6 @@ class ColaboradorController extends CI_Controller {
         $this->load->view('Colaborador/index');
         $this->load->view('templates/footer');
     }
-
     public function mostrarPerfilColaborador() {
          if ($this->session->userdata('rol') == NULL || $this->session->userdata('rol') != 2) {
             redirect(base_url() . 'iniciar');
@@ -41,17 +37,22 @@ class ColaboradorController extends CI_Controller {
  if ($this->session->userdata('rol') == NULL || $this->session->userdata('rol') != 2) {
             redirect(base_url() . 'iniciar');
         }
-//        $id = $this->uri->segment(3);
+
+         $this->form_validation->set_rules('txtemail', 'correo', 'required|valid_email|is_unique[usuario.email]');
+        $this->form_validation->set_rules('txtusuarioco', 'usuario', 'required|is_unique[usuario.NombreUsuario]');
+        $this->form_validation->set_message('is_unique', 'El  campo %s ya existe en el sistema ');
+        
+         if ($this->form_validation->run() === FALSE) {
+             $this->mostrarPerfilColaborador();
+         }else{
         $actualizarco = array(
             'nombreCompleto' => $this->input->post('txtNombCompl'),
             'NombreUsuario'=> $this->input->post('txtusuarioco'),
             'email' => $this->input->post('txtemail'),
         );
-
         $idUsuario = $this->input->post('idUsuario');
-
         $this->usuario_model->atualizarperfil($idUsuario, $actualizarco);
         redirect('colaborador');
     }
-
+}
 }

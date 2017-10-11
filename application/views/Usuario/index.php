@@ -4,17 +4,9 @@
         height: 200px;
     }
 </style>
-<div style="height: 5vh"></div> 
-<h1 class="h2-responsive orange-text text-center">Acerca</h1>
 
-<blockquote class="text-center blockquote">
-    <p>Immerpro es un proyecto web orientado al proceso de inventarios para minimercados realizado por aprendices del sena como proyecto de grado.</p>
 
-</blockquote>
-<div>
 
-    <h1 class="h2-responsive orange-text text-center">Caracteristicas</h1>
-    <div style="height: 5vh"></div> 
 
     <div class="container">
 
@@ -61,143 +53,83 @@
 
         <br>
 
- <div id="acerca"></div>
-        <div class="row">
-            <div class=" col-md-4">
-                <!--Card-->
-                <div class="card">
-
-                    <!--Card image-->
-                    <div class="view overlay hm-white-slight">
-                        <img  class="imagencard" src="<?PHP echo base_url(); ?>/public/img/woman_market.jpg">
-                        <a href="#">
-                            <div class="mask"></div>
-                        </a>
-                    </div>
+        
 
                     <!--Card content-->
-                    <div class="card-body">
-                        <!--Title-->
-                        <h4 class="card-title">1</h4>
-                        <!--Text-->
-                        <p class="card-text">Facil manejo y orientado al cliente</p>
-                    </div>
+                    
+<center>
+                    <div class="col-md-10">
 
-                </div> 
-            </div>
+                        <!-- Contact form -->
 
-            <div class="col-md-4">
-                <div class="card">
+                        <form action="<?php base_url() ?>contacto" method="POST" data-parsley-validate>
+                            
+                            <div class="col-lg-30 ">
+						<div class="form-wrapper">
+						<div class="wow fadeInRight" data-wow-duration="2s" data-wow-delay="0.2s">
+						
+							<div class="panel panel-skin">
+							<div class="panel-heading">
+									<h3 class="panel-title"><span class="fa fa-pencil-square-o"></span> Dijita tus datos <small>(es gratis!)</small></h3>
+									</div>
+									<div class="panel-body">
+									    <div id="sendmessage">Gracias por escribirnos</div>
+                                        <div id="errormessage"></div>
+                                   
+    					                <form action="" method="post" role="form" class="contactForm lead">
+    										<div class="row">
+    											<div class="col-xs-6 col-sm-6 col-md-6">
+    												<div class="form-group">
+    													<label>Nombre</label>
+    													<input type="text" name="first_name" id="first_name" class="form-control input-md" data-rule="minlen:3" data-msg="Please enter at least 3 chars">
+                                                        <div class="validation"></div>
+    												</div>
+    											</div>
+    											<div class="col-xs-6 col-sm-6 col-md-6">
+    												<div class="form-group">
+    													<label>Apellido</label>
+    													<input type="text" name="last_name" id="last_name" class="form-control input-md" data-rule="minlen:3" data-msg="Please enter at least 3 chars">
+                                                        <div class="validation"></div>
+    												</div>
+    											</div>
+    										</div>
 
-
-
-                    <!--Card image-->
-                    <div class="view overlay hm-white-slight">
-                        <img  class="imagencard" src="<?PHP echo base_url(); ?>/public/img/woman_market_2.jpg">
-                        <a href="#">
-                            <div class="mask"></div>
-                        </a>
-                    </div>
-
-                    <!--Card content-->
-                    <div class="card-body">
-                        <!--Title-->
-                        <h4 class="card-title">2</h4>
-                        <!--Text-->
-                        <p class="card-text">Gestiona los inventarios de manera segura</p>
-                    </div>
-
-                </div>
-            </div>
-
-
-
-
-            <div class=" col-md-4">
-                <div class="card">
-
-
-
-                    <!--Card image-->
-                    <div class="view overlay hm-white-slight">
-                        <img  class="imagencard" src="<?PHP echo base_url(); ?>/public/img/food.jpg">
-                        <a href="#">
-                            <div class="mask"></div>
-                        </a>
-                    </div>
-
-                    <!--Card content-->
-                    <div class="card-body">
-                        <!--Title-->
-                        <h4 class="card-title">3</h4>
-                        <!--Text-->
-                        <p class="card-text">Agilidad en sus procesos</p>
-                    </div>
-
-                </div>
-            </div>
+    										<div class="row">
+    											<div class="col-xs-6 col-sm-6 col-md-6">
+    												<div class="form-group">
+    													<label>Correo</label>
+    													<input type="email" name="email" id="email" class="form-control input-md" data-rule="email" data-msg="Please enter a valid email">
+                                                        <div class="validation"></div>
+    												</div>
+    											</div>
+    											<div class="col-xs-6 col-sm-6 col-md-6">
+    												<div class="form-group">
+    													<label>Numero de celular</label>
+    													<input type="text" name="phone" id="phone" class="form-control input-md" data-rule="required" data-msg="The phone number is required">
+                                                        <div class="validation"></div>
+    												</div>
+    											</div>
+    										</div>
+    										
+    										<input  type="submit" value="Submit" class="btn btn-skin btn-block btn-lg">
+    										
+    										<p class="lead-footer">*Recordamos que todos tus datos son confidenciales e importantes para nosotros</p>
+    									
+    									</form>
+								</div>
+							</div>				
+						
+						</div>
+						</div>
+					</div>	
+                    <!--/Second column-->
+                     <div class="row">
+            <?php messages_flash('red',validation_errors(),'Errores del formulario', true);?>
         </div>
 
-        <div class="thumbnail">
-
-
-            <!--Section: Contact v.1-->
-            <section class="section mb-4">
-                <div style="height: 5vh"></div> 
-                <!--Section heading-->
-                <div id="contacto"></div>
-                <h1 class="section-heading text-center orange-text">Contactanos</h1>
-
-                <!--Section sescription-->
-                <div class="row flex-center">
-                    <div class="col-md-6"></div>
-
-                    <div class="col-md-6">
-
-                    </div>
-                   
-                    <div class="col-md-7">
-
-                        <!-- Contact form -->
-                        <form>
-                            <div class="md-form">
-                                <i class="fa fa-user prefix grey-text"></i>
-                                <input type="text" id="form3" class="form-control">
-                                <label for="form3">Tu nombre</label>
-                            </div>
-
-                            <div class="md-form">
-                                <i class="fa fa-envelope prefix grey-text"></i>
-                                <input type="text" id="form2" class="form-control">
-                                <label for="form2">Tu email</label>
-                            </div>
-
-                            <div class="md-form">
-                                <i class="fa fa-tag prefix grey-text"></i>
-                                <input type="text" id="form32" class="form-control">
-                                <label for="form34">Asunto</label>
-                            </div>
-
-                            <div class="md-form">
-                                <i class="fa fa-pencil prefix grey-text"></i>
-                                <textarea type="text" id="form8" class="md-textarea" style="height: 100px"></textarea>
-                                <label for="form8">Su mensaje</label>
-                            </div>
-
-                            <div class="text-center">
-                                <button class="btn btn-orange">Enviar <i class="fa fa-paper-plane-o ml-1"></i></button>
-                            </div>
-
-                        </form>
-                        <!-- Contact form -->
-
-
-                    </div>
-                    <!--/Second column-->
-
                 </div>
-
-            </section>
+               
+            </section></center>
             <!--/Section: Contact v.1-->
         </div>
     </div>

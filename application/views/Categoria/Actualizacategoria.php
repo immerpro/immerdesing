@@ -11,7 +11,7 @@
             <div class="alert alert-success" role="alert" /> <?= $this->session->flashdata('incorrecto') ?> </div>  
 <?php endif; ?>
 </div>
-<?php echo form_open('categoria/CategoriaActualizada/'.$id); ?>
+<?php echo form_open('CategoriaController/CategoriaActualizada/'.$id); ?>
 <div class="row">
     <div class="col-lg-3"></div>
     <div class="col-6 col-md-6">

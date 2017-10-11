@@ -13,8 +13,8 @@
             <script type="text/javascript">
                function alerta(){
 				//un alert
-				alertify.alert("no se pudo enviar el email", function () {
-					location.href = '<?= base_url() ?>admin';
+				alertify.alert("no se pudo enviar el email por favor intentelo mas tarde", function () {
+					location.href = '<?= base_url() ?>';
 				});
 			}
                         alerta();

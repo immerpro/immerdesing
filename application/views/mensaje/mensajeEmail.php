@@ -15,8 +15,8 @@
                function alerta(){
 				//un alert
 				alertify.alert("email enviado correctamente\n\
-                                               por favor verificar si el correo se encuentra  en la carpeta de SPAM", function () {
-					location.href = '<?= base_url() ?>admin';
+                                               gracias por contactarnos ", function () {
+					location.href = '<?= base_url() ?>';
 				});
 			}
                         alerta();

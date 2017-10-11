@@ -13,12 +13,9 @@ class Proveedor_model extends CI_Model {
     }
     
     public function RegistrarProveedor($registroP){
-
       return $this->db->insert('proveedor', $registroP);  
     }
-
-    
-   public function TraerDatos(){
+     public function TraerDatos(){
       $this->db->where('Estados_idEstados', 1);
       $this->db->select('*');
       $this->db->from('proveedor');
@@ -67,7 +64,6 @@ class Proveedor_model extends CI_Model {
     }
 
     public function cantidad_filas() {
-
         $consulta = $this->db->get('proveedor');
         return $consulta->num_rows();
     }
@@ -87,8 +83,5 @@ class Proveedor_model extends CI_Model {
         $consulta = $this->db->get('proveedor',5);
         return $consulta->num_rows();
     }
-    
-
-
-       
+      
 }

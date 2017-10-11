@@ -11,6 +11,7 @@ class Restauracion_Model extends CI_Model {
         $query = $this->db->get($tabla);
         return $query->result_array();
     }
+
     public function mostrarRestauracionColaborador($colEstado, $tabla) {
         $this->db->where($colEstado, 3);
         $query = $this->db->get($tabla);
@@ -23,6 +24,7 @@ class Restauracion_Model extends CI_Model {
         $activaRestauracion = $this->db->update($tabla);
         return $activaRestauracion;
     }
+
     public function pasarAHabilitar($colEstado, $tabla, $idTabla, $valId) {
         $this->db->set($colEstado, 2, FALSE);
         $this->db->where($idTabla, $valId);
@@ -30,4 +32,12 @@ class Restauracion_Model extends CI_Model {
         return $activaRestauracion;
     }
 
-    }
+    /**
+     * Escribe lo que le pasen a un archivo de logs
+     * @param string $mensaje_del_log texto a escribir en el log
+     * @param string $tipo_error texto que indica el tipo de mensaje. Los valores normales son Info, Error,  
+     *                                       Warn Debug, Critical
+     */
+    
+
+}

@@ -1,13 +1,10 @@
 <?php
-
 class Reestablecer extends CI_Controller {
-
     //put your code here
     public function __construct() {
         parent::__construct();
         $this->load->model('restauracion_model');
     }
-
     public function index() {
 
         if ($this->session->userdata('rol') == NULL || $this->session->userdata('rol') != 1) {
@@ -29,7 +26,6 @@ class Reestablecer extends CI_Controller {
         $this->load->view('restauracion/index', $data);
         $this->load->view('templates/footer');
     }
-
     public function activoCategoria($codCategoria) {
          if ($this->session->userdata('rol') == NULL || $this->session->userdata('rol') != 1) {
             redirect(base_url() . 'iniciar');

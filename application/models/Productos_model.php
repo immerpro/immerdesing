@@ -1,9 +1,12 @@
 <?php
 
 class Productos_model extends CI_Model {
-
-    
-
+ public function obtenerProductos() {
+        $this->db->where('Estados_idEstados', 1);
+        $query = $this->db->get('producto');
+        return $query->result_array();
+    }
+   
     public function registrarProductoDetalle($descrip, $nombpro, $codb, $min, $max, $exist, $subc, $cantp, $lote, $fvencida) {
         $ingreso_producto_detalle = $this->db->query("CALL SPIngresoDetalProducto('$descrip',"
                 . "'$nombpro',"
@@ -17,10 +20,8 @@ class Productos_model extends CI_Model {
                 . "'$fvencida')");
         return $ingreso_producto_detalle;
     }
-    
-
+   
     // obtener productos para modificar
-
     public function obtener_productos_a_modificar($idProducto) {
         $this->db->where('idProducto', $idProducto);
         $query = $this->db->get('producto');

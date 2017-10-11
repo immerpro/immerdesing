@@ -1,29 +1,18 @@
 <?php
-
 class BuscadorController extends CI_Controller {
-
     public function __construct() {
         parent::__construct();
-        
-    }
-
+          }
     // metodo que ejecuta la vista principal
     public function index($numPag = 0) {
         if ($this->session->userdata('rol') == NULL) {
             redirect(base_url() . 'iniciar');
         }
-        
             ob_start();
             $this->pagina(0);
             $initial_content = ob_get_contents();
             ob_end_clean();
-        
-
-        //asignamos $initial_content al array data para pasarlo a la vista
-        //y así poder mostrar tanto los links como la tabla
-        // datos para inactivar un producto
-//        $idProducto = $this->uri->segment(3);
-        $data = array(
+                $data = array(
             'div1' => " <div id='pagina'>",
             'table' => $initial_content,
             'titulo' => "OrdenSalida",
@@ -34,17 +23,11 @@ class BuscadorController extends CI_Controller {
         $this->load->view('templates/menu', $data);
         $this->load->view('inventario/OrdenSalida', $data);
         $this->load->view('templates/footer');
-
-
-
-//
-//        // cargar la vista
     }
-
+// paginacion de la pagina
     public function pagina($numPag = 0) {
         $buscar_x_campo = $this->input->post('txtbuscar');
         $filtro = $this->input->post('ddlfiltro');
-
         $config['base_url'] = base_url('BuscadorController/pagina/');
         $config['div'] = '#pagina'; //asignamos un id al contenedor general
         $config['anchor_class'] = 'btn btn-dark-green btn-rounded'; //asignamos una clase a los links para maquetar
@@ -74,7 +57,6 @@ class BuscadorController extends CI_Controller {
         $config['num_tag_close'] = '</li>';
         $config['first_link'] = '« primero';
         $config['last_link'] = '» ùltimo';
-
         $template = array(
             'table_open' => '<table class="table table-striped table-bordered table-hover">',
             'thead_open' => '<thead >',
@@ -102,32 +84,23 @@ class BuscadorController extends CI_Controller {
         }
         $this->table->set_template($template);
         if ($lsalida) {
-            
             $this->table->set_heading('Nombre Producto', 'Precio', 'Cantidad', 'Motivo','Fecha');
             foreach ($lsalida as $listado) {
-
                 $this->table->add_row(
-                        $listado->productoSaliente, $listado->precioSal, $listado->cantidadSaliente, $listado->motivoSal,$listado->fechaSal);
+                        $listado->productoSaliente, 
+                        $listado->precioSal, 
+                        $listado->cantidadSaliente,
+                        $listado->motivoSal,
+                        $listado->fechaSal);
             }
             $this->jquery_pagination->initialize($config);
-
-            
-        } else {
+            //cargamos la paginación con los links
+            $html = $this->table->generate() .
+                    $this->jquery_pagination->create_links();
+            echo $html;
+                               } else {
             echo "<p class='lead'>No hay orden de salida</p>";
         }
-
-        $this->jquery_pagination->initialize($config);
-
-        //cargamos la paginación con los links
-        $html = $this->table->generate() .
-                $this->jquery_pagination->create_links();
-
-        echo $html;
-
-// cod fit
-        
+       
     }
-
-   
-
 }

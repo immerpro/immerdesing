@@ -46,12 +46,20 @@
             @page { margin: 180px 50px; }
             #header { 
                 position: fixed; 
-                left: 0px; top: -180px; 
+                left: 0px; top: -140px; 
                 right: 0px; 
                 height: 150px; 
                 background-color: #fff; 
                 color: #fff;
                 text-align: center; 
+            }
+            article,
+            aside,
+            footer,
+            header,
+            nav,
+            section {
+                display: block;
             }
             #footer { 
                 position: fixed; 
@@ -208,15 +216,13 @@
 
             .thead-inverse th {
                 color: #fff;
-                background-color: #212529; }
+                background-color: #eb9316; font-weight: bold; text-transform: uppercase; }
 
             .thead-default th {
                 color: #495057;
-                background-color: #e9ecef; }
+                background-color: #e9ecef;  }
 
-            .table-inverse {
-                color: #fff;
-                background-color: #212529; }
+            .table-inverse { color: #fff; background-color: #212529;  }
             .table-inverse th,
             .table-inverse td,
             .table-inverse thead th {
@@ -241,17 +247,17 @@
         <!--header para cada pagina-->
         <div id="header">
             <?php echo $titulo ?>
-            <img src="<?php base_url() ?>public/img/immerproLogo.png" class="tamanoimg">
+            <img src="<?php base_url() ?>public/img/immerpro.png" class="tamanoimg">
 
         </div>
         <!--footer para cada pagina-->
-        <div id="footer">
+        <footer>
             <!--aqui se muestra el numero de la pagina en numeros romanos-->
             <p class="page"></p>
 
 
 
-        </div>
+        </footer>
         <h2>Reporte de productos.</h2>
         <?php if ($productosVencidos): ?>
             <table class="table table-hover table-bordered table-striped">
@@ -291,7 +297,7 @@
             <p class="textErr">No hay informacion que cumpla con el criterio seleccionado </p>
         <?php endif; ?> 
         <a href="<?php echo base_url() ?>admin">volver a inicio</a><br>
-       
+
 
     </body>
 </html>

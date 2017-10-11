@@ -4,7 +4,7 @@
         <div style="height: 5vh"></div> 
         <div class="form-inline flex-center">
             <div class="row">
-                <?php echo form_open('categoria'); ?>
+                <?php echo form_open('CategoriaController'); ?>
                 <div class="md-form form-group">
                     <input type="search" name="txtbuscar" id="buscar" required="required" class="form-control" data-parsley-required="true">
                     <label for="buscar" class="badge badge-warning"> <i class="fa fa-search"></i> busqueda</label>

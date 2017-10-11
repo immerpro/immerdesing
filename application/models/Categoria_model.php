@@ -25,14 +25,6 @@ INNER JOIN subcategoria s ON c.idCategoria=s.Categoria_idCategoria");
             echo "no tiene subcategorias asociadas";
         }
     }
-
-    //put your code here
-    public function obtenerCategorias() {
-        $this->db->where('estado_EstadoId', 1);
-        $query = $this->db->get('categoria');
-        return $query->result_array();
-    }
-
     //ingresar categorias
     public function ingressarCategoria() {
         $categoria = array(
@@ -43,7 +35,6 @@ INNER JOIN subcategoria s ON c.idCategoria=s.Categoria_idCategoria");
 
         return $this->db->insert('categoria', $categoria);
     }
-
     public function nombrecategoria($id) {
         $this->db->select('NombreCategoria');
         $this->db->from('categoria');
@@ -55,12 +46,10 @@ INNER JOIN subcategoria s ON c.idCategoria=s.Categoria_idCategoria");
             return FALSE;
         }
     }
-
     public function Actualizacategoria($idCategoria, $data) {
         $this->db->where('idCategoria', $idCategoria);
         $this->db->update('categoria', $data);
     }
-
     public function obtener_categoria_a_modificar($idCategoria) {
         $this->db->where('idCategoria', $idCategoria);
         $query = $this->db->get('categoria');
@@ -70,7 +59,6 @@ INNER JOIN subcategoria s ON c.idCategoria=s.Categoria_idCategoria");
             return FALSE;
         }
     }
-
     public function inactivarcategoria($idCategoria) {
         $this->db->set('estado_EstadoId', 2);
         $this->db->where('idCategoria', $idCategoria);
@@ -97,13 +85,11 @@ INNER JOIN subcategoria s ON c.idCategoria=s.Categoria_idCategoria");
         $this->db->where('estado_EstadoId', 1);
         $consulta = $this->db->get('categoria', $limite, $numPag);
         if ($consulta->num_rows() > 0) {
-
             return $consulta->result();
         }
     }
 
     public function cantidad_filas() {
-
         $consulta = $this->db->get('categoria');
         return $consulta->num_rows();
     }
@@ -117,12 +103,10 @@ INNER JOIN subcategoria s ON c.idCategoria=s.Categoria_idCategoria");
             return $consulta->result();
         }
     }
-
     public function cantidad_filasFiltrado($buscar_x_campo) {
         $this->db->like('NombreCategoria', $buscar_x_campo);
         $consulta = $this->db->get('categoria',5);
         return $consulta->num_rows();
     }
-    
-
+  
 }

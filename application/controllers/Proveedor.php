@@ -77,14 +77,11 @@ class Proveedor extends CI_Controller {
 
         $info = array(
             'titulo' => "Consultar Proveedor",
-            //'proveedor' => $this->Proveedor_model->TraerDatos(),
             'es_usuario_normal' => FALSE,
             'div1' => " <div id='pagina'>",
             'table' => $initial_content,
             'perfil' => $this->usuario_model->consultarPerfil($this->session->userdata('idUsuario'))
         );
-//
-
         $this->load->view('templates/header', $info);
         $this->load->view('templates/menu', $info);
         $this->load->view('Proveedor/ConsultarProveedor', $info);
@@ -92,7 +89,6 @@ class Proveedor extends CI_Controller {
     }
 
     public function pagina($numPag = 0) {
-
         $config['base_url'] = base_url('Proveedor/pagina/');
         $config['div'] = '#pagina'; //asignamos un id al contenedor general
         $config['anchor_class'] = 'btn btn-dark-green btn-rounded'; //asignamos una clase a los links para maquetar
@@ -166,7 +162,6 @@ class Proveedor extends CI_Controller {
     public function paginaProveedor($numPag = 0) {
         $buscar_x_campo = $this->input->post('txtbuscar');
         $filtro = $this->input->post('ddlfiltro');
-
         $config['base_url'] = base_url('Proveedor/paginaProveedor/');
         $config['div'] = '#pagina'; //asignamos un id al contenedor general
         $config['anchor_class'] = 'btn btn-dark-green btn-rounded'; //asignamos una clase a los links para maquetar

@@ -32,7 +32,7 @@
 
             <div class="col-md-4">
                 <div class="card">
-                    <img class="img-fluid" src="<?PHP echo base_url(); ?>/public/img/market1.jpg" alt="Card image cap">
+                    <img class="img-fluid" src="<?PHP echo base_url(); ?>/public/img/market1.jpg" alt="Card image cap" height="" width="">
                     <div class="card-body">
                         <h4 class="card-title">SubCategorìa</h4>
                         <p class="card-text"><i class="fa fa-quote-left"></i>En este modulo se gestiona la parte de categorias de productos en donde el administrador podra crear, modificar, consultar.</p>

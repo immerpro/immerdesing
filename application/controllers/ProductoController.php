@@ -1,11 +1,8 @@
 <?php
-
 class ProductoController extends CI_Controller {
-
     public function __construct() {
         parent::__construct();
     }
-
     // metodo que ejecuta la vista principal
     public function index($numPag = 0) {
         if ($this->session->userdata('rol') == NULL) {
@@ -18,7 +15,6 @@ class ProductoController extends CI_Controller {
         $this->pagina(0);
         $initial_content = ob_get_contents();
         ob_end_clean();
-
         //asignamos $initial_content al array data para pasarlo a la vista
         //y así poder mostrar tanto los links como la tabla
         // datos para inactivar un producto
@@ -35,10 +31,6 @@ class ProductoController extends CI_Controller {
         $this->load->view('productos/index', $data);
         $this->load->view('templates/footer');
 
-
-
-//
-//        // cargar la vista
     }
 
     public function pagina($numPag = 0) {
@@ -105,7 +97,6 @@ class ProductoController extends CI_Controller {
         $this->table->set_template($template);
         if ($this->session->userdata('rol') == 2) {
             if ($listadoProducto) {
-
                 $this->table->set_heading('Producto', 'Descripción', 'Minimo Stock', 'Maximo Stock', 'Existencias', 'Subcategorìa', 'Categorìa');
                 foreach ($listadoProducto as $productos_item) {
                     if ($productos_item['Existencias'] > $productos_item['MaximoStock']) {
@@ -116,15 +107,25 @@ class ProductoController extends CI_Controller {
                         $productos_item['Existencias'] = "<span class='badge badge-info'>" . $productos_item['Existencias'] . "</span>";
                     }
                     $this->table->add_row(
-                            $productos_item['NombreProducto'], $productos_item['DescripcionProducto'], $productos_item['minimoStock'], $productos_item['MaximoStock'], $productos_item['Existencias'], $productos_item['NombreSubcategoria'], $productos_item['NombreCategoria']
+                            $productos_item['NombreProducto'], 
+                            $productos_item['DescripcionProducto'], 
+                            $productos_item['minimoStock'], 
+                            $productos_item['MaximoStock'], 
+                            $productos_item['Existencias'], 
+                            $productos_item['NombreSubcategoria'],
+                            $productos_item['NombreCategoria']
                     );
                 }
+                $this->jquery_pagination->initialize($config);
+                                        //cargamos la paginación con los links
+                        $html = $this->table->generate() .
+                                $this->jquery_pagination->create_links();
+                                        echo $html;
             } else {
                 echo "<p class='lead'>No hay productos</p>";
             }
         } else {
             if ($listadoProducto) {
-
                 $this->table->set_heading('Producto', 'Descripción', 'Minimo Stock', 'Maximo Stock', 'Existencias', 'Subcategorìa', 'Categorìa', 'Acciones');
                 foreach ($listadoProducto as $productos_item) {
                     if ($productos_item['Existencias'] > $productos_item['MaximoStock']) {
@@ -135,20 +136,27 @@ class ProductoController extends CI_Controller {
                         $productos_item['Existencias'] = "<span class='badge badge-info'>" . $productos_item['Existencias'] . "</span>";
                     }
                     $this->table->add_row(
-                            $productos_item['NombreProducto'], $productos_item['DescripcionProducto'], $productos_item['minimoStock'], $productos_item['MaximoStock'], $productos_item['Existencias'], $productos_item['NombreSubcategoria'], $productos_item['NombreCategoria'], 'Modificar <a class="teal-text" href=' . base_url() . 'ProductoController/editar/' . $productos_item['idProducto'] . '><i class="fa fa-pencil "></i></a>'
+                            $productos_item['NombreProducto'],
+                            $productos_item['DescripcionProducto'], 
+                            $productos_item['minimoStock'], 
+                            $productos_item['MaximoStock'],
+                            $productos_item['Existencias'], 
+                            $productos_item['NombreSubcategoria'],
+                            $productos_item['NombreCategoria'],
+                            'Modificar <a class="teal-text" href=' . base_url() . 'ProductoController/editar/' . $productos_item['idProducto'] . '><i class="fa fa-pencil "></i></a>'
                             . nbs(3) . 'Inactivar <a class="red-text" href=' . base_url() . 'ProductoController/modal/' . $productos_item['idProducto'] . '><i class="fa fa-times" ></i></a>');
                 }
+                $this->jquery_pagination->initialize($config);
+                                        //cargamos la paginación con los links
+                        $html = $this->table->generate() .
+                                $this->jquery_pagination->create_links();
+                
+                        echo $html;
             } else {
                 echo "<p class='lead'>No hay productos</p>";
             }
         }
-        $this->jquery_pagination->initialize($config);
-
-        //cargamos la paginación con los links
-        $html = $this->table->generate() .
-                $this->jquery_pagination->create_links();
-
-        echo $html;
+       
     }
 
 // metodo que ejecuta la vista para ingresar datos
@@ -166,8 +174,8 @@ class ProductoController extends CI_Controller {
         /* asigno reglas de validacion 1parametro=> name del campo del formulario 
          * 2parametro=> titulo validacion 
           3parametro restricciones */
-        $this->form_validation->set_rules('txtDescripcion', 'Descripción', 'required|trim');
-        $this->form_validation->set_rules('txtNombProd', 'Producto', 'required|is_unique[producto.NombreProducto]');
+        $this->form_validation->set_rules('txtDescripcion', 'Descripción', 'required|trim|max_length[300]');
+        $this->form_validation->set_rules('txtNombProd', 'Producto', 'required|is_unique[producto.NombreProducto]|min_length[8]|max_length[50]');
         $this->form_validation->set_rules('txtCodBarras', 'Codigo de barras', 'required|min_length[13]|max_length[13]');
         $this->form_validation->set_rules('txtMinimo', 'minimo Stock', 'required|integer');
         $this->form_validation->set_rules('txtMaximo', 'maximo Stock', 'required|integer|greater_than[' . $this->input->post('txtMinimo') . ']');
@@ -205,18 +213,14 @@ class ProductoController extends CI_Controller {
             $cantPro = $this->input->post('nbCantidadPro');
             $lote = $this->input->post('txtLote');
             $fechavenc = date("Ymd", strtotime($this->input->post('fvencimiento')));
-
-
             // llamo al metodo para agregar productos y el detalle 
             $ingresoNuevoProducto = $this->productos_model->registrarProductoDetalle($descrip, $nomPro, $CodBarras, $minStock, $maximoStock, $existencias, $subcat_id, $cantPro, $lote, $fechavenc);
-
             if ($ingresoNuevoProducto) {
                 //Sesion de una sola ejecución
                 $this->session->set_flashdata('correcto', 'producto creado correctamente');
             } else {
                 $this->session->set_flashdata('incorrecto', 'El producto no  esta  creado');
             }
-
             $this->load->view('templates/header', $titulo);
             $this->load->view('templates/menu', $data);
             $this->load->view('productos/nuevoProducto', $data);
@@ -226,9 +230,7 @@ class ProductoController extends CI_Controller {
 
     // verifica que la fecha de vencimiento sea mayor a la fecha actual
     public function verificar_fecha() {
-
         $fechavenc = date("Ymd", strtotime($this->input->post('fvencimiento')));
-
         if ($fechavenc <= date("Ymd")) {
             $this->form_validation->set_message('verificar_fecha', 'la fecha de vencimiento debe ser mayor a la fecha actual');
             return FALSE;
@@ -262,9 +264,6 @@ class ProductoController extends CI_Controller {
                 $Existencias = $fila->Existencias;
                 $subcategoria = $fila->Subcategoria_idSubcategoria;
             }
-//           $nombC = $this->productos_model->obtener_nombreCategoria($subcategoria);
-//            var_dump($nombC);
-
             $data = array(
                 'id' => $idProducto,
                 'descripcion' => rtrim($DescripcionProducto),
@@ -320,19 +319,16 @@ class ProductoController extends CI_Controller {
             redirect('producto');
         }
     }
-
     // muestra la vista de modal 
     public function modal() {
         $idProducto = $this->uri->segment(3);
         $mostrarNombre = $this->productos_model->obtener_nombre($idProducto);
-
         $info_modal = array(
             'id' => $idProducto,
             'titulo_h1' => "producto a inactivar",
             'titulo' => "modal",
             'nombrePro' => $mostrarNombre
         );
-
         $this->load->view('templates/header', $info_modal);
         $this->load->view('productos/modal', $info_modal);
     }

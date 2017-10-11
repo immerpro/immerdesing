@@ -5,7 +5,7 @@
 <?php  if ($this->session->flashdata('activo')): ?>
             <div class=" alert alert-success" aria-label="Close"><?php echo $this->session->flashdata('activo'); ?> </div> 
         <?php endif; ?>
- <?php echo form_open('categoria/inactivar/'.$id); ?>
+ <?php echo form_open('CategoriaController/inactivar/'.$id); ?>
 <div >
     <div style="height: 21vh"></div>
     <div class="modal-dialog modal-notify modal-success" role="document">

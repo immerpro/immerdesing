@@ -1,13 +1,9 @@
 <?php
-
 class Inventario extends CI_Controller {
-
     //put your code here
     public function __construct() {
-        parent::__construct();
-       
+        parent::__construct();  
     }
-
     public function index() {
         if ($this->session->userdata('rol') == NULL || $this->session->userdata('rol') != 1) {
             redirect(base_url() . 'iniciar');
@@ -33,7 +29,6 @@ class Inventario extends CI_Controller {
         $this->load->view('inventario/index');
         $this->load->view('templates/footer');
     }
-
     public function mostrarNotificacionView() {
         if ($this->session->userdata('rol') == NULL || $this->session->userdata('rol') != 1) {
             redirect(base_url() . 'iniciar');
@@ -49,9 +44,7 @@ class Inventario extends CI_Controller {
     // envia un correo de forma automatica cada 20 dias 
     public function notificar() {
         date_default_timezone_set('America/Bogota');
-        if ($this->session->userdata('rol') == NULL || $this->session->userdata('rol') != 1) {
-            redirect(base_url() . 'iniciar');
-        }
+       
         $vencido = $this->inventario_model->cantidadVencidos();
         $agotado = $this->inventario_model->cantidadAgotados();
         $porAgotarse = $this->inventario_model->cantidadXAgotarse();
@@ -283,9 +276,10 @@ class Inventario extends CI_Controller {
         }
     }
     public function NuevaOrdenDeEntrada() {
-
-        $data = ['titulo' => "nuevo orden de entrada", 'es_usuario_normal' => FALSE, 'proveedor_select' => $this->Proveedor_model->TraerDatos(),
-            'perfil' => $this->usuario_model->consultarPerfil($this->session->userdata('idUsuario'))];
+        $data = ['titulo' => "nuevo orden de entrada", 
+                 'es_usuario_normal' => FALSE, 
+                 'proveedor_select' => $this->Proveedor_model->TraerDatos(),
+                 'perfil' => $this->usuario_model->consultarPerfil($this->session->userdata('idUsuario'))];
         $this->form_validation->set_rules('txtCodProv', 'Codigo del Proveedor', 'required');
         $this->form_validation->set_rules('txtPreentra', 'Precio entrada', 'required|numeric');
         $this->form_validation->set_rules('txtCantentra', 'cantidad Entrada', 'required|integer');

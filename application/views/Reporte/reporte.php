@@ -3,6 +3,12 @@
     <div style="height: 4vh"></div>
 
     <section class="text-center placeholders">
+        <?php if ($this->session->flashdata('excelok')): ?>
+            <div class="alert alert-success alert-dismissible" role="alert">
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <?php echo $this->session->flashdata('excelok'); ?> 
+            </div>
+        <?php endif; ?>
         <?php echo form_open('ReporteController/generarReporte'); ?>
         <div class="row">
             <div class="col-5 col-md-5">
@@ -49,8 +55,8 @@
                         'name' => 'ffinal',
                         'id' => 'final',
                         'class' => 'form-control',
-                         'data-parsley-required'=>'true',
-                    'data-parsley-trigger'=>'keyup'
+                        'data-parsley-required' => 'true',
+                        'data-parsley-trigger' => 'keyup'
                     );
                     echo form_input($data);
                     ?>
